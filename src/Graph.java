@@ -39,7 +39,7 @@ public class Graph {
 				String[] adjVertices = br.readLine().split(" ");
 				sourceVertex.initAdj(adjVertices.length);
 				for (String adjVertex : adjVertices) {
-					int sinkId = Integer.parseInt(adjVertex);  // using ids starting from 0
+					int sinkId = Integer.parseInt(adjVertex) - 1;  // using ids starting from 0
 					Vertex sinkVertex = vertices.get(sinkId);
 					sourceVertex.addAdj(sinkVertex);
 					numberOfEdges++;
