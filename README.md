@@ -18,8 +18,8 @@ We compare our results with the study of [Ausiello et al.](https://link.springer
 - ~~Generate Test Graphs~~
     - ~~Generate a R-MAT based powerlaw graph, like the one used in the paper~~
 - Implement Spanner algorithms
-    - Greedy spanner ([lecture slides](https://avs.cs.sbg.ac.at/slides/slides05.pdf) page 5-14)
-    - Baswana/Sen unweighted ([lecture slides](https://avs.cs.sbg.ac.at/slides/slides05.pdf) page 15-24)
+    - Greedy spanner ([lecture slides](https://avs.cs.sbg.ac.at/slides/slides05.pdf) page 5-14, Algorithm on page 10)
+    - Baswana/Sen unweighted ([lecture slides](https://avs.cs.sbg.ac.at/slides/slides05.pdf) page 15-24, Algorithm on page 20)
     - Spanner from [exercise 6](https://avs.cs.sbg.ac.at/exercises/ex06.pdf)
     - (optional: Elkin [paper](https://dl.acm.org/doi/10.1145/3274651))
 - Compute and prepare figures like in the paper
