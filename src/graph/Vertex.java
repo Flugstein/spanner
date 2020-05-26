@@ -1,24 +1,29 @@
+package graph;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Vertex implements Comparable<Vertex> {
 
+	private final Graph g;
 	private final Integer id;
-	private HashMap<Vertex, Boolean> adjMap;  // for faster isAdj()
-	private ArrayList<Vertex> adjList;  // for faster BFS
+	private ArrayList<Vertex> adjList = new ArrayList<>();
 
-	public Vertex(int id) {
+	public Vertex(Graph g, int id) {
+		this.g = g;
 		this.id = id;
 	}
 
 	protected void initAdj(int size) {
-		adjMap = new HashMap<>(size);
 		adjList = new ArrayList<>(size);
 	}
 
-	protected void addAdj(Vertex k) {
-		adjMap.put(k, true);
-		adjList.add(k);
+	public boolean addAdj(Vertex u) {
+		g.nEdges++;
+		return adjList.add(u);
+	}
+
+	public boolean removeAdj(Vertex u) {
+		return adjList.remove(u);
 	}
 
 	public ArrayList<Vertex> getAdj() {
@@ -26,7 +31,7 @@ public class Vertex implements Comparable<Vertex> {
 	}
 
 	public boolean isAdj(Vertex v) {
-		return adjMap.containsKey(v);  // O(1)
+		return adjList.contains(v);
 	}
 
 	public int getDegree() {
