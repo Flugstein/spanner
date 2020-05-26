@@ -1,6 +1,5 @@
 package algo;
 
-import algo.BFS;
 import graph.Graph;
 import graph.Vertex;
 
@@ -18,6 +17,10 @@ public class StretchFactor {
 		double stretchFactorSum = 0.0;
 		int countedSamples = 0;
 		int disconnectedVertices = 0;
+
+		System.out.println("Computing stretch factor...");
+		long startTime = System.currentTimeMillis();
+		int old_progress = 0;
 
 		for (int i = 0; i < sampleSize; i++) {
 			// Sample random vertices
@@ -41,10 +44,15 @@ public class StretchFactor {
 				countedSamples++;
 			}
 
+			int progress = (i * 100) / sampleSize;
+			if (progress != old_progress) {
+				old_progress = progress;
+				System.out.print("\r" + progress + "%");
+			}
 		}
-
-		System.out.println("Vertices that got disconnected in the spanner: " + disconnectedVertices + " / " + sampleSize);
-		System.out.println("Vertices not counted because of infinite distance: " + (sampleSize - countedSamples) + " / " + sampleSize);
+		System.out.println("\rDone in " + ((System.currentTimeMillis() - startTime) / 1000) + "s");
+		if (disconnectedVertices != 0)
+			System.out.println("Disconnected vertices in the spanner: " + disconnectedVertices + " / " + sampleSize);
 
 		return stretchFactorSum / countedSamples;
 	}

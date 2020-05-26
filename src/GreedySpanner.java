@@ -8,8 +8,9 @@ public class GreedySpanner {
 		BFS bfs = new BFS(g.getnVertices());
 		Graph s = g.createEdgelessCopy();
 
-		int old_progress = 0;
 		System.out.println("Computing greedy spanner with k=" + k + "...");
+		long startTime = System.currentTimeMillis();
+		int old_progress = 0;
 
 		for (Vertex v : g.getVertices()) {
 			Vertex v_s = s.getVertex(v.getId());
@@ -30,7 +31,7 @@ public class GreedySpanner {
 				System.out.print("\r" + progress + "%");
 			}
 		}
-		System.out.println();
+		System.out.println("\rDone in " + ((System.currentTimeMillis() - startTime) / 1000) + "s");
 
 		return s;
 	}
